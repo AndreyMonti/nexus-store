@@ -1,97 +1,74 @@
-# Nexus Store
+# Nexus Store - E-commerce App
 
-Nexus Store é um e-commerce completo desenvolvido para demonstração acadêmica.
+Um aplicativo e-commerce moderno com tema verde, suporte a modo claro/escuro e funcionalidades completas para compradores e vendedores.
 
----
+## Configuração do Supabase
 
-## Pré-requisitos
+### 1. Criar Projeto no Supabase
+1. Acesse [supabase.com](https://supabase.com)
+2. Crie uma conta ou faça login
+3. Clique em "New Project"
+4. Preencha as informações do projeto
+5. Aguarde a criação do banco de dados
 
-- Node.js v18 ou superior  
-- pnpm instalado globalmente (`npm i -g pnpm`)  
-- Conta e projeto criado no Supabase
+### 2. Executar o Schema SQL
+1. No painel do Supabase, vá para "SQL Editor"
+2. Clique em "New Query"
+3. Copie todo o conteúdo do arquivo `supabase-schema.sql`
+4. Cole no editor SQL
+5. Clique em "Run" para executar
 
----
+### 3. Configurar Variáveis de Ambiente
+1. No painel do Supabase, vá para "Settings" > "API"
+2. Copie a "URL" do projeto
+3. Copie a chave "anon/public"
+4. Crie um arquivo `.env` na raiz do projeto
+5. Adicione as seguintes linhas:
 
-## Instalação
-
-Para instalar as dependências, execute:
-
-```bash
-pnpm install
+```env
+EXPO_PUBLIC_SUPABASE_URL=sua-url-aqui
+EXPO_PUBLIC_SUPABASE_ANON_KEY=sua-chave-aqui
 ```
 
----
+## Funcionalidades
 
-## Configuração do Banco de Dados (Supabase)
+### Comprador
+- ✅ Visualizar produtos com filtros por categoria
+- ✅ Buscar produtos
+- ✅ Ver detalhes do produto
+- ✅ Adicionar ao carrinho
+- ✅ Finalizar compra
+- ✅ Gerenciar perfil
+- ✅ Alternar entre modo claro/escuro
 
-1. Acesse o painel do Supabase.  
-2. Abra o **SQL Editor**.  
-3. Na raiz do projeto existe um arquivo **.sql** contendo toda a estrutura do banco.  
-4. Copie o conteúdo desse arquivo e cole no SQL Editor do Supabase ou faça upload direto.  
-5. Execute o script para criar as tabelas e dados necessários.
+### Vendedor
+- ✅ Cadastrar produtos
+- ✅ Visualizar lista de produtos
+- ✅ Ver pedidos recebidos
+- ✅ Informações de entrega
+- ✅ Gerenciar perfil
+- ✅ Alternar entre modo claro/escuro
 
----
+## Tecnologias
 
-## Variáveis de Ambiente
+- React Native
+- Expo
+- TypeScript
+- Expo Router
+- Supabase
+- AsyncStorage
 
-Crie um arquivo `.env` na raiz com:
+## Como Usar
 
-```
-NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_anon_key
-SUPABASE_SERVICE_ROLE_KEY=sua_service_role_key
-PORT=3000
-```
+1. Faça a configuração do Supabase conforme instruções acima
+2. Execute `npm install` ou `yarn install`
+3. Execute `npm start` ou `yarn start`
+4. Escaneie o QR code com o app Expo Go
 
-Ajuste de acordo com o seu projeto.
+## Estrutura do Banco de Dados
 
----
-
-## Scripts Disponíveis
-
-Confirme no `package.json`, mas normalmente:
-
-```bash
-pnpm dev       # modo desenvolvimento
-pnpm build     # build de produção
-pnpm start     # executar build
-```
-
----
-
-## Executar o Projeto
-
-Após instalar as dependências e configurar o banco e o .env:
-
-```bash
-pnpm dev
-```
-
-Acesse `http://localhost:3000`.
-
----
-
-## Deploy
-
-Para gerar a build:
-
-```bash
-pnpm build
-pnpm start
-```
-
-Lembre-se de configurar as variáveis de ambiente na plataforma onde fizer o deploy.
-
----
-
-## Equipe
-
-- Andrey Montibeller  
-- Gustavo Martins  
-- Rafael Leal  
-- Rian Brito  
-- Samuel Boaz  
-
----
-
-
+- **users**: Usuários (compradores e vendedores)
+- **categories**: Categorias de produtos
+- **products**: Produtos cadastrados
+- **orders**: Pedidos realizados
+- **order_items**: Itens dos pedidos
